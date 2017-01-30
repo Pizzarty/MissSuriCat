@@ -48,6 +48,13 @@ switch ($action) {
 		$vueAAfficher = "views/login.php";
 		break;
 
+	case "listCommande":
+		$commandeRepo = new CommandeRepositoy();
+		$listeCommandes = $commandeRepo->getAll($pdo);
+		$vueAAfficher = "views/listCommande.php";
+
+		break;
+
 	case "listClient":
 		//On prépare la vue a afficher avec les données dont elle a besoin
 		$clientRepo = new ClientRepository();
