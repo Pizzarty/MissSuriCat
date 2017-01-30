@@ -23,7 +23,7 @@
     public function getCivilite(){
       return $this->civilite;
     }
-    public function setCiv($civilite){
+    public function setCivilite($civilite){
       $this->civilite = $civilite;
     }
 
