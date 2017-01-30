@@ -17,7 +17,7 @@
     foreach ($listeClients as $client) {
       echo '<tr>';
       echo '<td>' . $client->getId() . '</td>';
-      echo '<td>' . $client->getCiv() . '</td>';
+      echo '<td>' . $client->getCivilite() . '</td>';
       echo '<td>' . $client->getNom() . '</td>';
       echo '<td>' . $client->getPrenom() . '</td>';
       echo '<td>' . $client->getDateNaissance() . '</td>';
