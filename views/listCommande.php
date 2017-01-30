@@ -1,7 +1,7 @@
 <a href="./index.php?action=formAddCommande">Ajouter</a>
 <table>
   <thead>
-    <th>Id Commande</th>
+    <th>Id</th>
     <th>Référence</th>
     <th>Nom Client</th>
     <th>Prénom Client</th>
@@ -14,7 +14,7 @@
       foreach ($listCommande as $commande) {
         echo '<tr>';
           echo '<td>' . $commande->getId() . '</td>';
-          echo '<td>' . $commande->getRef() . '</td>';
+          echo '<td>' . $commande->getReference() . '</td>';
           echo '<td>' . $commande->getNom() . '</td>';
           echo '<td>' . $commande->getPrenom() . '</td>';
           echo '<td>' . $commande->getDateCommande() . '</td>';
