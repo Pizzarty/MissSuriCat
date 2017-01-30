@@ -9,25 +9,27 @@
     <th>Adresse</th>
     <th>Code Postal</th>
     <th>Ville</th>
-    <th>Bic</th>
-    <th>Iban</th>
+    <th>Modifier</th>
+    <th>Supprimer</th>
   </thead>
   <tbody>
     <?php
-      foreach ($listeClients as $client) {
-        echo '<tr>';
-          echo '<td>' . $client->getId() . '</td>';
-          echo '<td>' . $client->getCiv() . '</td>';
-          echo '<td>' . $client->getNom() . '</td>';
-          echo '<td>' . $client->getPrenom() . '</td>';
-          echo '<td>' . $client->getDateNaissance() . '</td>';
-          echo '<td>' . $client->getAdresse() . '</td>';
-          echo '<td>' . $client->getCp() . '</td>';
-          echo '<td>' . $client->getVille() . '</td>';
-          echo '<td>' . $client->getBic() . '</td>';
-          echo '<td>' . $client->getIban() . '</td>';
-        echo '</tr>';
-      }
+    foreach ($listeClients as $client) {
+      echo '<tr>';
+      echo '<td>' . $client->getId() . '</td>';
+      echo '<td>' . $client->getCivilite() . '</td>';
+      echo '<td>' . $client->getNom() . '</td>';
+      echo '<td>' . $client->getPrenom() . '</td>';
+      echo '<td>' . $client->getDateNaissance() . '</td>';
+      echo '<td>' . $client->getAdresse() . '</td>';
+      echo '<td>' . $client->getCp() . '</td>';
+      echo '<td>' . $client->getVille() . '</td>';
+      echo '<td><a href="./index.php?action=formEditClient&id=' . $client->getId() . '"">Editer</a></td>';
+      echo '<td><a href="./index.php?action=deleteClient&id=' . $client->getId() . '">Supprimer</a></td>';
+      echo '</tr>';  
+    }
     ?>
   </tbody>
 </table>
+<!-- Afficher ici le message d'erreur ou de confirmation lors d'une suppression -->
+<label><?php if(isset($message)) echo $message ?></label>
