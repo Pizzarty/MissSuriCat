@@ -52,7 +52,7 @@ switch ($action) {
 
 	case "listCommande":
 		$commandeRepo = new CommandeRepository();
-		$listeCommandes = $commandeRepo->getAll($pdo);
+		$listCommande = $commandeRepo->getAll($pdo);
 		$vueAAfficher = "views/listCommande.php";
 
 		break;
