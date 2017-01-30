@@ -20,7 +20,7 @@
       $this->id = $id;
     }
 
-    public function getCiv(){
+    public function getCivilite(){
       return $this->civilite;
     }
     public function setCiv($civilite){
