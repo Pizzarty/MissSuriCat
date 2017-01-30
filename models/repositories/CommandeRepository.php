@@ -20,9 +20,9 @@
         $commande->setReference($obj->reference);
         $commande->setNom($obj->nom);
         $commande->setPrenom($obj->prenom);
-        $commande->setDateCommande($obj->dateCommande);
-        $commande->setDateExpedition($obj->dateExpedition);
-        $commande->setStatut($obj->statut);
+        $commande->setDateCommande($obj->date_cmd);
+        $commande->setDateExpedition($obj->date_expedition);
+        $commande->setStatut($obj->libelle);
 
         $listCommande[] = $commande;
 
