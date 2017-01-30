@@ -1,11 +1,9 @@
 <?php
-class Commande
+class Commande extends Personne
   {
 
     protected $id;
     protected $reference;
-    protected $nom;
-    protected $prenom;
     protected $dateCommande;
     protected $dateExpedition;
     protected $statut;
@@ -23,20 +21,6 @@ class Commande
     }
     public function setReference($reference){
       $this->reference = $reference;
-    }
-
-    public function getNom(){
-      return $this->nom;
-    }
-    public function setNom($nom){
-      $this->nom = $nom;
-    }
-
-    public function getPrenom(){
-      return $this->prenom;
-    }
-    public function setPrenom($prenom){
-      $this->prenom = $prenom;
     }
 
     public function getDateCommande(){
