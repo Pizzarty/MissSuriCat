@@ -11,25 +11,25 @@
       $req->setFetchMode(PDO::FETCH_OBJ);
 
 
-      $listClients = array();
+      $listCommande = array();
 
       while ($obj = $req->fetch()){
 
-        $client = new Commande();
-        $client->setId($obj->id);
-        $client->setReference($obj->reference);
-        $client->setNom($obj->nom);
-        $client->setPrenom($obj->prenom);
-        $client->setDateCommande($obj->dateCommande);
-        $client->setDateExpedition($obj->dateExpedition);
-        $client->setStatut($obj->statut);
+        $commande = new Commande();
+        $commande->setId($obj->id);
+        $commande->setReference($obj->reference);
+        $commande->setNom($obj->nom);
+        $commande->setPrenom($obj->prenom);
+        $commande->setDateCommande($obj->dateCommande);
+        $commande->setDateExpedition($obj->dateExpedition);
+        $commande->setStatut($obj->statut);
 
-        $listClients[] = $client;
+        $listCommande[] = $commande;
 
 
       }
 
-        return $listClients;
+        return $listCommande;
 
     }
   }
