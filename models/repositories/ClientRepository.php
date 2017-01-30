@@ -26,7 +26,7 @@
 
         $client = new Client();
         $client->setId($obj->id);
-        $client->setCiv($obj->civilite);
+        $client->setCivilite($obj->civilite);
         $client->setPrenom($obj->prenom);
         $client->setNom($obj->nom);
         $client->setDateNaissance($obj->date_naissance);
