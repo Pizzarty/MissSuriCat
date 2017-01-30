@@ -11,7 +11,7 @@
   </thead>
   <tbody>
     <?php
-      foreach ($listeCommande as $commande) {
+      foreach ($listCommande as $commande) {
         echo '<tr>';
           echo '<td>' . $commande->getId() . '</td>';
           echo '<td>' . $commande->getRef() . '</td>';
