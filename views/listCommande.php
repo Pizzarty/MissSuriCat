@@ -15,8 +15,8 @@
         echo '<tr>';
           echo '<td>' . $commande->getId() . '</td>';
           echo '<td>' . $commande->getReference() . '</td>';
-          echo '<td>' . $commande->getNom() . '</td>';
-          echo '<td>' . $commande->getPrenom() . '</td>';
+          echo '<td>' . $commande->getClient()->getNom() . '</td>';
+          echo '<td>' . $commande->getClient()->getPrenom() . '</td>';
           echo '<td>' . $commande->getDateCommande() . '</td>';
           echo '<td>' . $commande->getDateExpedition() . '</td>';
           echo '<td>' . $commande->getStatut() . '</td>';
