@@ -15,11 +15,15 @@
 
       while ($obj = $req->fetch()){
 
+        $client = new Client();
+        $client->setNom($obj->nom);
+        $client->setPrenom($obj->prenom);
+        
+
         $commande = new Commande();
         $commande->setId($obj->id);
-        $commande->setReference($obj->reference);
-        $commande->setNom($obj->nom);
-        $commande->setPrenom($obj->prenom);
+        $commande->setReference($obj->ref);
+        $commande->setClient($client);
         $commande->setDateCommande($obj->date_cmd);
         $commande->setDateExpedition($obj->date_expedition);
         $commande->setStatut($obj->libelle);
