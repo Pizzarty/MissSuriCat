@@ -7,6 +7,7 @@ class Commande extends Personne
     protected $dateCommande;
     protected $dateExpedition;
     protected $statut;
+    protected $client;
 
 
     public function getId(){
@@ -44,4 +45,10 @@ class Commande extends Personne
       $this->statut = $statut;
     }
 
+    public function getClient(){
+      return $this->client;
+    }
+    public function setClient($client){
+      $this->client = $client;
+    }
   }
