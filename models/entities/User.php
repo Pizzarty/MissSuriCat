@@ -1,6 +1,6 @@
 <?php
 
-class User 
+class User
 {
 
 	private $id;
@@ -8,6 +8,7 @@ class User
 	private $prenom;
 	private $login;
 	private $password;
+	private $grade;
 
 	public function getId() {
 		return $this->id;
@@ -49,6 +50,13 @@ class User
 		$this->password = $password;
 	}
 
+	public function getGrade() {
+		return $this->grade;
+	}
+
+	public function setGrade($grade) {
+		$this->grade = $grade;
+	}
 
 
 

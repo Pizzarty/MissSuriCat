@@ -9,7 +9,7 @@
     <th>Adresse</th>
     <th>Code Postal</th>
     <th>Ville</th>
-    <th>Modifier</th>
+    <th>Editer</th>
     <th>Supprimer</th>
   </thead>
   <tbody>

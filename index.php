@@ -7,9 +7,12 @@ include_once('models/entities/Client.php');
 include_once('models/entities/User.php');
 include_once('models/entities/Statut.php');
 include_once('models/entities/Commande.php');
+include_once('models/entities/CommandeProduit.php');
+include_once('models/entities/Produit.php');
 include_once('models/repositories/ClientRepository.php');
 include_once('models/repositories/UserRepository.php');
 include_once('models/repositories/CommandeRepository.php');
+include_once('models/repositories/ProduitRepository.php');
 
 //On récupère un objet PDO une fois pour toutes pour dialoguer avec la bdd
 $pdo = PDOFactory::getMysqlConnection();
@@ -35,14 +38,21 @@ switch ($action) {
 			$_SESSION['login'] = $user->getLogin();
 			$_SESSION['nom'] = $user->getNom();
 			$_SESSION['prenom'] = $user->getPrenom();
+			$_SESSION['grade'] = $user->getGrade();
 			//On prépare la vue à afficher avec les données dont elle a besoin
-			$clientRepo = new ClientRepository();
-			$listeClients = $clientRepo->getAll($pdo);
-			$vueAAfficher = "views/listClient.php";
+			if($_SESSION['grade'] == 1) {
+				$clientRepo = new ClientRepository();
+				$listeClients = $clientRepo->getAll($pdo);
+				$vueAAfficher = "views/listClient.php";
+			} elseif($_SESSION['grade'] == 2) {
+				$commandeRepo = new CommandeRepository();
+				$listCommande = $commandeRepo->getAll($pdo);
+				$vueAAfficher = "views/listCommande.php";
+			}
 		} else {
-			$message = "Identifiants invalides !";
-			$vueAAfficher = "views/login.php";
-		}
+				$message = "Identifiants invalides !";
+				$vueAAfficher = "views/login.php";
+			}
 		break;
 
 	case "disconnect":
@@ -57,6 +67,35 @@ switch ($action) {
 		$vueAAfficher = "views/listCommande.php";
 
 		break;
+
+	case "listProduit":
+		$produitRepo = new ProduitRepository();
+		$listProduit = $produitRepo->getAll($pdo);
+		$vueAAfficher = "views/listProduit.php";
+
+		break;
+
+	case "formEditProduit":
+		$produitRepo = new ProduitRepository();
+		$produit = $produitRepo->getOneById($pdo, $_GET['id']);
+		$vueAAfficher = "views/formEditProduit.php";
+
+		break;
+
+		case "updateProduit":
+			//Instancier un objet du modèle qui va s'occuper de sauvegarder votre client
+			$produit = new Produit();
+			$produit->setId($_POST["id"]);
+			$produit->setReference($_POST["ref"]);
+			$produit->setLibelle($_POST["libelle"]);
+			$produit->setDescription($_POST["desc"]);
+			$produit->setPrixUnitaire($_POST["prix"]);
+			$produit->setQuantite($_POST["quantite"]);
+
+			//On sauveagrde et on prépare la vue à afficher ensuite
+			$message = $produit->save($pdo);
+			$vueAAfficher = "views/formEditProduit.php";
+			break;
 
 	case "listClient":
 		//On prépare la vue a afficher avec les données dont elle a besoin

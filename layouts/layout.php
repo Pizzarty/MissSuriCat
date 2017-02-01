@@ -5,11 +5,14 @@
     <title>Blog Miss SuriCat</title>
   </head>
   <body>
-    <?php if (!empty($_SESSION['login'])) { ?>
+    <?php if (!empty($_SESSION['login'])) {?>
       <!-- Bloc Menu -->
-      <a href="./index.php?action=listClient">Clients</a>
+      <? if($_SESSION['grade'] == 1){
+        ?><a href="./index.php?action=listClient">Clients</a><?php
+      } ?>
       <a href="./index.php?action=listCommande">Commandes</a>
-      <label>Bienvenue sur mon blog de la mort qui tue <?php echo $_SESSION['prenom'] . ' ' . $_SESSION['nom'] ?></label>
+      <a href="./index.php?action=listProduit">Produits</a>
+      <label>Bienvenue sur mon blog de la mort qui tue <?php  echo $_SESSION['prenom'] . ' ' . $_SESSION['nom'] ?></label>
       <a href="./index.php?action=disconnect">Déconnexion</a>
     <?php } ?>
     <!-- Bloc Contenu -->
