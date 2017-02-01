@@ -5,6 +5,7 @@ include_once('library/PDOFactory.php');
 include_once('models/entities/Personne.php');
 include_once('models/entities/Client.php');
 include_once('models/entities/User.php');
+include_once('models/entities/Statut.php');
 include_once('models/entities/Commande.php');
 include_once('models/repositories/ClientRepository.php');
 include_once('models/repositories/UserRepository.php');
@@ -29,7 +30,7 @@ switch ($action) {
 	case "verifLogin":
 		$userRepo = new UserRepository();
 		$user = $userRepo->getUser($pdo, $_POST['login'], $_POST['pwd']);
-		
+
 		if($user) {
 			$_SESSION['login'] = $user->getLogin();
 			$_SESSION['nom'] = $user->getNom();
@@ -65,7 +66,7 @@ switch ($action) {
 		break;
 
 	//Affiche le formulaire d'ajout d'un client
-	case "formAddClient": 
+	case "formAddClient":
 		//On prépare la vue à afficher
 		$vueAAfficher = "views/formAddClient.php";
 		break;
@@ -144,19 +145,3 @@ switch ($action) {
 }
 
 include_once("layouts/layout.php");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
