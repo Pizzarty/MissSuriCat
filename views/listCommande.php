@@ -8,6 +8,8 @@
     <th>Date Commande</th>
     <th>Date Expédition</th>
     <th>Statut Commande</th>
+    <th>Editer</th>
+    <th>Supprimer</th>
   </thead>
   <tbody>
     <?php
