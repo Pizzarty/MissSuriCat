@@ -6,6 +6,8 @@
     <th>Civilité</th>
     <th>Nom Client</th>
     <th>Prénom Client</th>
+    <th>Produit</th>
+    <th>Quantite</th>
     <th>Date Commande</th>
     <th>Date Expédition</th>
     <th>Statut Commande</th>
@@ -21,6 +23,8 @@
           echo '<td>' . $commande->getClient()->getCivilite() . '</td>';
           echo '<td>' . $commande->getClient()->getNom() . '</td>';
           echo '<td>' . $commande->getClient()->getPrenom() . '</td>';
+          echo '<td>' . $commande->getProduit()->getLibelle() . '</td>';
+          echo '<td>' . $commande->getCommandeProduit()->getQuantite() . '</td>';
           echo '<td>' . $commande->getDateCommande() . '</td>';
           echo '<td>' . $commande->getDateExpedition() . '</td>';
           echo '<td>' . $commande->getStatut()->getLibelle() . '</td>';

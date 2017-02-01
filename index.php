@@ -7,9 +7,13 @@ include_once('models/entities/Client.php');
 include_once('models/entities/User.php');
 include_once('models/entities/Statut.php');
 include_once('models/entities/Commande.php');
+include_once('models/entities/CommandeProduit.php');
+include_once('models/entities/Produit.php');
 include_once('models/repositories/ClientRepository.php');
 include_once('models/repositories/UserRepository.php');
 include_once('models/repositories/CommandeRepository.php');
+include_once('models/repositories/ProduitRepository.php');
+
 
 //On récupère un objet PDO une fois pour toutes pour dialoguer avec la bdd
 $pdo = PDOFactory::getMysqlConnection();
@@ -55,6 +59,13 @@ switch ($action) {
 		$commandeRepo = new CommandeRepository();
 		$listCommande = $commandeRepo->getAll($pdo);
 		$vueAAfficher = "views/listCommande.php";
+
+		break;
+
+	case "listProduit":
+		$produitRepo = new ProduitRepository();
+		$listProduit = $produitRepo->getAll($pdo);
+		$vueAAfficher = "views/listProduit.php";
 
 		break;
 
