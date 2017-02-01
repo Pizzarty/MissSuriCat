@@ -3,6 +3,7 @@
   <thead>
     <th>Id</th>
     <th>Référence</th>
+    <th>Civilité</th>
     <th>Nom Client</th>
     <th>Prénom Client</th>
     <th>Date Commande</th>
@@ -17,11 +18,12 @@
         echo '<tr>';
           echo '<td>' . $commande->getId() . '</td>';
           echo '<td>' . $commande->getReference() . '</td>';
+          echo '<td>' . $commande->getClient()->getCivilite() . '</td>';
           echo '<td>' . $commande->getClient()->getNom() . '</td>';
           echo '<td>' . $commande->getClient()->getPrenom() . '</td>';
           echo '<td>' . $commande->getDateCommande() . '</td>';
           echo '<td>' . $commande->getDateExpedition() . '</td>';
-          echo '<td>' . $commande->getStatut() . '</td>';
+          echo '<td>' . $commande->getStatut()->getLibelle() . '</td>';
           echo '<td><a href="./index.php?action=formEditCommande&id=' . $commande->getId() . '"">Editer</a></td>';
           echo '<td><a href="./index.php?action=deleteCommande&id=' . $commande->getId() . '">Supprimer</a></td>';
         echo '</tr>';
