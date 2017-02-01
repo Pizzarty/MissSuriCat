@@ -9,6 +9,7 @@
       <!-- Bloc Menu -->
       <a href="./index.php?action=listClient">Clients</a>
       <a href="./index.php?action=listCommande">Commandes</a>
+      <a href="./index.php?action=listProduit">Produits</a>
       <label>Bienvenue sur mon blog de la mort qui tue <?php echo $_SESSION['prenom'] . ' ' . $_SESSION['nom'] ?></label>
       <a href="./index.php?action=disconnect">Déconnexion</a>
     <?php } ?>
