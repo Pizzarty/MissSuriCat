@@ -13,6 +13,10 @@ include_once('models/repositories/ClientRepository.php');
 include_once('models/repositories/UserRepository.php');
 include_once('models/repositories/CommandeRepository.php');
 include_once('models/repositories/ProduitRepository.php');
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8b29baf844c20385cbea5a2f6c46f2c55713ee90
 
 //On récupère un objet PDO une fois pour toutes pour dialoguer avec la bdd
 $pdo = PDOFactory::getMysqlConnection();
@@ -75,6 +79,7 @@ switch ($action) {
 
 		break;
 
+<<<<<<< HEAD
 	case "formEditProduit":
 		$produitRepo = new ProduitRepository();
 		$produit = $produitRepo->getOneById($pdo, $_GET['id']);
@@ -97,6 +102,8 @@ switch ($action) {
 			$vueAAfficher = "views/formEditProduit.php";
 			break;
 
+=======
+>>>>>>> 8b29baf844c20385cbea5a2f6c46f2c55713ee90
 	case "listClient":
 		//On prépare la vue a afficher avec les données dont elle a besoin
 		$clientRepo = new ClientRepository();

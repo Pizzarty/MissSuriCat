@@ -8,7 +8,8 @@ class Commande extends Personne
     protected $dateExpedition;
     protected $statut;
     protected $client;
-
+    protected $produit;
+    protected $commande_produit;
 
     public function getId(){
       return $this->id;
@@ -50,5 +51,19 @@ class Commande extends Personne
     }
     public function setClient($client){
       $this->client = $client;
+    }
+
+    public function getProduit(){
+      return $this->produit;
+    }
+    public function setProduit($produit){
+      $this->produit = $produit;
+    }
+
+    public function getCommandeProduit(){
+      return $this->commande_produit;
+    }
+    public function setCommandeProduit($commande_produit){
+      $this->commande_produit = $commande_produit;
     }
   }
