@@ -25,8 +25,8 @@
           echo '<td>' . $produit->getPrixUnitaire() . ' €</td>';
           echo '<td>' . $produit->getQuantite() . '</td>';
           if($_SESSION['grade'] == 1){
-            echo '<td><a href="./index.php?action=formEditCommande&id=' . $produit->getId() . '"">Editer</a></td>';
-            echo '<td><a href="./index.php?action=deleteCommande&id=' . $produit->getId() . '">Supprimer</a></td>';
+            echo '<td><a href="./index.php?action=formEditProduit&id=' . $produit->getId() . '"">Editer</a></td>';
+            echo '<td><a href="./index.php?action=deleteProduit&id=' . $produit->getId() . '">Supprimer</a></td>';
           }
         echo '</tr>';
       }
