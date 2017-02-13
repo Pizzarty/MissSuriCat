@@ -35,4 +35,28 @@ class ProduitRepository
         return $listProduit;
 
     }
+    public function getOneById($pdo, $id) {
+
+    //Effectuer la requête en bdd pour récupérer le client correspondant à l'id renseigné
+    $resultat = $pdo->query('SELECT p.id, p.libelle, p.prix_unitaire, p.quantite_stock, p.ref, p.description FROM produit p WHERE p.id = ' . $id);
+
+    $resultat->setFetchMode(PDO::FETCH_OBJ);
+
+    $obj = $resultat->fetch();
+    
+    //Ensuite :
+    // 1 -  instancier un objet client
+    // 2 -  hydrater ses attributs avec les valeurs récupérées en bdd
+    // 3 -  retourner ensuite cet objet
+
+    $produit = new Produit();
+    $produit->setLibelle($obj->libelle);
+    $produit->setPrixUnitaire($obj->prix_unitaire);
+    $produit->setQuantite($obj->quantite_stock);
+    $produit->setReference($obj->ref);
+    $produit->setDescription($obj->description);
+    $produit->setId($obj->id);
+  
+    return $produit;
+  }
   }

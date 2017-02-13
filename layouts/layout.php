@@ -14,7 +14,7 @@
       <a href="./index.php?action=listProduit">Produits</a>
       <label>Bienvenue sur mon blog de la mort qui tue <?php echo $_SESSION['prenom'] . ' ' . $_SESSION['nom'] ?></label>
       <a href="./index.php?action=disconnect">Déconnexion</a>
-    <?php } ?>
+    <?php  ?>
     <!-- Bloc Contenu -->
     <div id="contenu">
       <!-- Affiche une vue en fonction de l'action que l'utilisateur souhaite réaliser -->
