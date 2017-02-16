@@ -13,10 +13,6 @@
     <th>Date Commande</th>
     <th>Date Expédition</th>
     <th>Statut</th>
-    <?php if($_SESSION['grade'] == 1){ ?>
-      <th>Editer</th>
-      <th>Supprimer</th>
-    <?php } ?>
   </thead>
   <tbody>
     <?php
@@ -32,10 +28,6 @@
           echo '<td>' . $commande->getDateCommande() . '</td>';
           echo '<td>' . $commande->getDateExpedition() . '</td>';
           echo '<td>' . $commande->getStatut()->getLibelle() . '</td>';
-          if($_SESSION['grade'] == 1){
-            echo '<td><a href="./index.php?action=formEditCommande&id=' . $commande->getId() . '"">Editer</a></td>';
-            echo '<td><a href="./index.php?action=deleteCommande&id=' . $commande->getId() . '">Supprimer</a></td>';
-          }
         echo '</tr>';
       }
     ?>

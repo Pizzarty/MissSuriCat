@@ -4,13 +4,12 @@ session_start();
 include_once('library/PDOFactory.php');
 include_once('models/entities/Personne.php');
 include_once('models/entities/Client.php');
-include_once('models/entities/User.php');
 include_once('models/entities/Statut.php');
 include_once('models/entities/Commande.php');
 include_once('models/entities/CommandeProduit.php');
 include_once('models/entities/Produit.php');
 include_once('models/repositories/ClientRepository.php');
-include_once('models/repositories/UserRepository.php');
+include_once('models/repositories/PersonneRepository.php');
 include_once('models/repositories/CommandeRepository.php');
 include_once('models/repositories/ProduitRepository.php');
 
@@ -32,14 +31,14 @@ if (isset($_REQUEST['action'])) {
 switch ($action) {
 
 	case "verifLogin":
-		$userRepo = new UserRepository();
-		$user = $userRepo->getUser($pdo, $_POST['login'], $_POST['pwd']);
+		$personneRepo = new PersonneRepository();
+		$personne = $personneRepo->getPersonne($pdo, $_POST['login'], $_POST['pwd']);
 
-		if($user) {
-			$_SESSION['login'] = $user->getLogin();
-			$_SESSION['nom'] = $user->getNom();
-			$_SESSION['prenom'] = $user->getPrenom();
-			$_SESSION['grade'] = $user->getGrade();
+		if($personne) {
+			$_SESSION['login'] = $personne->getLogin();
+			$_SESSION['nom'] = $personne->getNom();
+			$_SESSION['prenom'] = $personne->getPrenom();
+			$_SESSION['grade'] = $personne->getGrade();
 			//On prépare la vue à afficher avec les données dont elle a besoin
 			if($_SESSION['grade'] == 1) {
 				$clientRepo = new ClientRepository();
