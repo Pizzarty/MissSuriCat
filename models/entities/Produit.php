@@ -9,8 +9,9 @@ class Produit
 	private $prixUnitaire;
 	private $quantite;
 
-  public function save($pdo) {
-    
+
+	public function save($pdo) {
+  
     //Si l'id est renseigné à l'appel de la méthode alors c'est une mise à jour, sinon $id équivaut à false et alors l'objet client actuel doit faire l'objet d'un nouvel enregistrement.
     if($this->id) {
       //appeler la bonne méthode
@@ -27,20 +28,21 @@ class Produit
     try {
       //Exécuter la requête insert d'une personne en base de donnée
       //Préparation de la requête
-      $stmt = $pdo->prepare('INSERT INTO produit (ref, libelle, description, prix_unitaire, quantite_stock) VALUES ( :ref, :libelle, :descr, :prix, :quantite)');
+
+      $stmt = $pdo->prepare('INSERT INTO produit (ref, libelle, quantite_stock, prix_unitaire, description) VALUES (:ref, :libelle, :quantite, :prix, :descr)');
+
 
       //Binder les paramètres à la requête de manière sécurisée
       $stmt->bindParam(':ref', $this->reference, PDO::PARAM_STR);
       $stmt->bindParam(':libelle', $this->libelle, PDO::PARAM_STR);
-      $stmt->bindParam(':descr', $this->description, PDO::PARAM_STR);
-      $stmt->bindParam(':prix', $this->prixUnitaire, PDO::PARAM_STR);
       $stmt->bindParam(':quantite', $this->quantite, PDO::PARAM_INT);
+      $stmt->bindParam(':prix', $this->prixUnitaire, PDO::PARAM_INT);
+      $stmt->bindParam(':descr', $this->description, PDO::PARAM_STR);
 
-      //On exécute ensuite la requête préparée
       $stmt->execute();
 
+      return "Votre produit a été enregistré avec succès";
 
-      return "Votre nouveau produit a été enregistré avec succès";
     }
     catch(PDOException $e) {
       return "Votre enregistrement a échoué, en voici la raison : " . $e->getMessage();
@@ -53,21 +55,25 @@ class Produit
     try {
       //Exécuter la requête update d'une personne en base de donnée
       //Préparation de la requête
-      $stmt = $pdo->prepare('UPDATE produit SET ref = :ref, libelle = :libelle, description = :descr, prix_unitaire = :prix, quantite_stock = :quantite WHERE id = :id');
+
+      $stmt = $pdo->prepare('UPDATE produit SET ref = :ref, libelle = :libelle, description = :descr, quantite_stock = :quantite, prix_unitaire = :prix WHERE id = :id');
 
       //Binder les paramètres à la requête de manière sécurisée
-      $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
       $stmt->bindParam(':ref', $this->reference, PDO::PARAM_STR);
       $stmt->bindParam(':libelle', $this->libelle, PDO::PARAM_STR);
-      $stmt->bindParam(':descr', $this->description, PDO::PARAM_STR);
-      $stmt->bindParam(':prix', $this->prixUnitaire, PDO::PARAM_STR);
       $stmt->bindParam(':quantite', $this->quantite, PDO::PARAM_INT);
+      $stmt->bindParam(':prix', $this->prixUnitaire, PDO::PARAM_INT);
+      $stmt->bindParam(':descr', $this->description, PDO::PARAM_STR);
+      $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
+
 
       //On exécute ensuite la requête préparée
       $stmt->execute();
 
 
+
       return "Votre produit a été mis à jour avec succès";
+
     }
     catch(PDOException $e) {
       return "Votre mise à jour a échoué, en voici la raison : " . $e->getMessage();

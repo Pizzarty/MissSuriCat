@@ -204,6 +204,29 @@ switch ($action) {
 			$vueAAfficher = "views/listClient.php";
 			break;
 		}
+
+		//crée un nouveau client dans la base de données
+	case "insertProduit":
+		//Instancier un objet du modèle qui va s'occuper sauvegarder votre client
+		$produit = new Produit();
+		$produit->setReference($_POST["ref"]);
+		$produit->setLibelle($_POST["libelle"]);
+		$produit->setDescription($_POST["descr"]);
+		$produit->setPrixUnitaire($_POST["prix"]);
+		$produit->setQuantite($_POST["quantite"]);
+		//On prépare la vue à afficher ensuite
+		$message = $produit->save($pdo);
+		$vueAAfficher = "views/formAddProduit.php";
+		break;
+
+		case "formAddProduit":
+		//On prépare la vue à afficher
+		$vueAAfficher = "views/formAddProduit.php";
+		break;
+
 }
 
+
 include_once("layouts/layout.php");
+
+
