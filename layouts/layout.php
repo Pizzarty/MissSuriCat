@@ -8,13 +8,14 @@
     <?php if (!empty($_SESSION['login'])) {?>
       <!-- Bloc Menu -->
       <? if($_SESSION['grade'] == 1){
-        ?><a href="./index.php?action=listClient">Clients</a><?php
-      } ?>
-      <a href="./index.php?action=listCommande">Commandes</a>
+        ?><a href="./index.php?action=listClient">Clients</a>
+        <a href="./index.php?action=listCommande">Commandes</a>
+        <?php } ?>
+      <a href="./index.php?action=passerCommande">Passer une commande</a>
       <a href="./index.php?action=listProduit">Produits</a>
       <label>Bienvenue en enfer <?php echo $_SESSION['prenom'] . ' ' . $_SESSION['nom'] ?></label>
       <a href="./index.php?action=disconnect">Déconnexion</a>
-    <?php  ?>
+    <?php } ?>
     <!-- Bloc Contenu -->
     <div id="contenu">
       <!-- Affiche une vue en fonction de l'action que l'utilisateur souhaite réaliser -->
