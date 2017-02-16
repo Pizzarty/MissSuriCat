@@ -44,10 +44,10 @@ private function save($pdo) {
       //On exécute ensuite la requête préparée
       $stmt3->execute();
 
-      return "Votre nouveau client a été enregistré avec succès";
+      return "Votre commande a été enregistré avec succès";
     }
     catch(PDOException $e) {
-      return "Votre enregistrement a échoué, en voici la raison : " . $e->getMessage();
+      return "Votre commande a échoué, en voici la raison : " . $e->getMessage();
     }
 
   }

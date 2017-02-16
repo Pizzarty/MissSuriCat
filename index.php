@@ -229,17 +229,20 @@ switch ($action) {
 
 		$produit = new Produit();
 		$produit->setLibelle($_POST["produit"]);
+		$produit->setQuantite($_POST["quantite"]);
 
 
 		$commande = new Commande();
 		$datetime = new DateTime();
 		$commande->setDateCmd($datetime);
 		$commande->setProduit($_POST["produit"]);
+		$message = $commande->save($pdo);
 
 		$commande_produit = new CommandeProduit();
 		$commande_produit->setQuantite($_POST["quantite"]);
 
-		$message = $commande->save($pdo);
+		$message = $commande_produit->save($pdo);
+		$vueAAfficher = "views/passerCommande.php";
 
 
 

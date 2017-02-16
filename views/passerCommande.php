@@ -21,5 +21,4 @@
   <label><?php echo $message ?></label>
   <input type="submit" value="Ajouter au panier"/>
   <input type="hidden" name="action" value="insertPanier"/>
-  <input type="hidden" name="action" value=<?php echo $client->getId() ?>/>
 </form>
