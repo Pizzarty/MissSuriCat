@@ -48,7 +48,7 @@ switch ($action) {
 			} elseif($_SESSION['grade'] == 2) {
 				$commandeRepo = new CommandeRepository();
 				$listCommande = $commandeRepo->getAll($pdo);
-				$vueAAfficher = "views/passerCommande.php";
+				$vueAAfficher = "views/listProduit.php";
 			}
 		} else {
 				$message = "Identifiants invalides !";
