@@ -32,10 +32,6 @@
           echo '<td>' . $commande->getDateCommande() . '</td>';
           echo '<td>' . $commande->getDateExpedition() . '</td>';
           echo '<td>' . $commande->getStatut()->getLibelle() . '</td>';
-          if($_SESSION['grade'] == 1){
-            echo '<td><a href="./index.php?action=formEditCommande&id=' . $commande->getId() . '"">Editer</a></td>';
-            echo '<td><a href="./index.php?action=deleteCommande&id=' . $commande->getId() . '">Supprimer</a></td>';
-          }
         echo '</tr>';
       }
     ?>
