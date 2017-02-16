@@ -16,7 +16,7 @@
 	<input type="text" name="adresse" value="<?php echo $client->getAdresse() ?>"/>
 	<br>
 	<label>Code Postal</label>
-	<input type="text" name="code_postal" value="<?php echo $client->getCp() ?>"/>
+	<input type="text" name="cp" value="<?php echo $client->getCp() ?>"/>
 	<br>
 	<label>Ville</label>
 	<input type="text" name="ville" value="<?php echo $client->getVille() ?>"/>

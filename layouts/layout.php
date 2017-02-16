@@ -7,8 +7,8 @@
   <body>
     <?php if (!empty($_SESSION['login'])) {?>
       <!-- Bloc Menu -->
-      <? if($_SESSION['grade'] == 1){
-        ?><a href="./index.php?action=listClient">Clients</a>
+      <?php if($_SESSION['grade'] == 1){ ?>
+        <a href="./index.php?action=listClient">Clients</a>
         <a href="./index.php?action=listCommande">Commandes</a>
         <?php } ?>
       <a href="./index.php?action=passerCommande">Passer une commande</a>
