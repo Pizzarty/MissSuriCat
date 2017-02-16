@@ -122,7 +122,7 @@ switch ($action) {
 		$client->setPrenom($_POST["prenom"]);
 		$client->setDateNaissance($_POST["date_naissance"]);
 		$client->setAdresse($_POST["adresse"]);
-		$client->setCp($_POST["code_postal"]);
+		$client->setCp($_POST["cp"]);
 		$client->setVille($_POST["ville"]);
 		$client->setBic($_POST["bic"]);
 		$client->setIban($_POST["iban"]);
@@ -191,6 +191,9 @@ switch ($action) {
 		$listProduit = $produitRepo->getAll($pdo);
 		$vueAAfficher = "views/passerCommande.php";
 		break;
+
+	case "insertPanier":
+		$commandeRepo = new CommandeRepository();
 
 
 	//Jeu d'instructions appelé lorsque aucune action n'est renseignée dans l'url
