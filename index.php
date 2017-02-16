@@ -84,7 +84,7 @@ switch ($action) {
 
 		break;
 
-		case "updateProduit":
+	case "updateProduit":
 			//Instancier un objet du modèle qui va s'occuper de sauvegarder votre client
 			$produit = new Produit();
 			$produit->setId($_POST["id"]);
@@ -171,6 +171,18 @@ switch ($action) {
 		$clientRepo = new ClientRepository();
 		$listeClients = $clientRepo->getAll($pdo);
 		$vueAAfficher = "views/listClient.php";
+		break;
+
+case "deleteProduit":
+		//Instancier l'objet modèle client à partir duquel on va supprimer son enregistrement dans la bdd
+		$produit = new Produit();
+		$produit->setId($_GET['id']);
+
+		//On supprime et on prépare la vue à afficher avec les données dont elle a besoin
+		$message = $produit->delete($pdo);
+		$produitRepo = new ProduitRepository();
+		$listProduit = $produitRepo->getAll($pdo);
+		$vueAAfficher = "views/listProduit.php";
 		break;
 
 	//Jeu d'instructions appelé lorsque aucune action n'est renseignée dans l'url

@@ -84,12 +84,12 @@ class Produit
     //Supprimer un enregistrement en base de donnée
     //Faire un try catch qui renvoie un message pour indiquer si la suppression s'est bien déroulée ou non
     try{
-      $stmt = $pdo->prepare('DELETE FROM personne WHERE id = :id');
+      $stmt = $pdo->prepare('DELETE FROM produit WHERE id = :id');
       $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
 
       $stmt->execute();
 
-      return "Votre client a bien été supprimé.";
+      return "Votre produit a bien été supprimé.";
     }
     catch(PDOException $e) {
       return "Votre suppression a échoué, en voici la raison : " . $e->getMessage();
