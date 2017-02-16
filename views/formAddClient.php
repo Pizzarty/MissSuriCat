@@ -30,7 +30,7 @@
 
   <input type="submit" value="Ajouter"/>
   <br>
-  <label><?php echo $mesage ?></label>
+  <label><?php echo $message ?></label>
   <input type="hidden" name="action" value="insertClient"/>
 
 

@@ -173,7 +173,7 @@ switch ($action) {
 		$vueAAfficher = "views/listClient.php";
 		break;
 
-case "deleteProduit":
+	case "deleteProduit":
 		//Instancier l'objet modèle client à partir duquel on va supprimer son enregistrement dans la bdd
 		$produit = new Produit();
 		$produit->setId($_GET['id']);
@@ -184,6 +184,14 @@ case "deleteProduit":
 		$listProduit = $produitRepo->getAll($pdo);
 		$vueAAfficher = "views/listProduit.php";
 		break;
+
+	case "passerCommande":
+
+		$produitRepo = new ProduitRepository();
+		$listProduit = $produitRepo->getAll($pdo);
+		$vueAAfficher = "views/passerCommande.php";
+		break;
+
 
 	//Jeu d'instructions appelé lorsque aucune action n'est renseignée dans l'url
 	default:
