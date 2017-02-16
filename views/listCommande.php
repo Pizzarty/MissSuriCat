@@ -6,13 +6,10 @@
     <th>Id</th>
     <th>Référence</th>
     <th>Civilité</th>
-<<<<<<< HEAD
     <th>Nom</th>
     <th>Prénom</th>
-=======
     <th>Nom Client</th>
     <th>Prénom Client</th>
->>>>>>> 8b29baf844c20385cbea5a2f6c46f2c55713ee90
     <th>Produit</th>
     <th>Quantite</th>
     <th>Date Commande</th>

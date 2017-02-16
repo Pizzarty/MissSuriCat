@@ -14,6 +14,7 @@ include_once('models/repositories/UserRepository.php');
 include_once('models/repositories/CommandeRepository.php');
 include_once('models/repositories/ProduitRepository.php');
 
+
 //On récupère un objet PDO une fois pour toutes pour dialoguer avec la bdd
 $pdo = PDOFactory::getMysqlConnection();
 
@@ -89,7 +90,7 @@ switch ($action) {
 			$produit->setId($_POST["id"]);
 			$produit->setReference($_POST["ref"]);
 			$produit->setLibelle($_POST["libelle"]);
-			$produit->setDescription($_POST["desc"]);
+			$produit->setDescription($_POST["descr"]);
 			$produit->setPrixUnitaire($_POST["prix"]);
 			$produit->setQuantite($_POST["quantite"]);
 
@@ -97,6 +98,7 @@ switch ($action) {
 			$message = $produit->save($pdo);
 			$vueAAfficher = "views/formEditProduit.php";
 			break;
+
 
 	case "listClient":
 		//On prépare la vue a afficher avec les données dont elle a besoin

@@ -7,6 +7,8 @@ class ProduitRepository
 
 	if($_SESSION['grade'] == 1){
 		$req = $pdo->query("SELECT id, description, libelle, prix_unitaire, quantite_stock, ref FROM produit");
+
+
 	} elseif($_SESSION['grade'] == 2){
 		$req = $pdo->query("SELECT id, description, libelle, prix_unitaire, quantite_stock, ref FROM produit WHERE quantite_stock > 0");
 	}
@@ -35,10 +37,12 @@ class ProduitRepository
         return $listProduit;
 
     }
+
     public function getOneById($pdo, $id) {
 
     //Effectuer la requête en bdd pour récupérer le client correspondant à l'id renseigné
     $resultat = $pdo->query('SELECT p.id, p.libelle, p.prix_unitaire, p.quantite_stock, p.ref, p.description FROM produit p WHERE p.id = ' . $id);
+
 
     $resultat->setFetchMode(PDO::FETCH_OBJ);
 
@@ -50,6 +54,7 @@ class ProduitRepository
     // 3 -  retourner ensuite cet objet
 
     $produit = new Produit();
+
     $produit->setLibelle($obj->libelle);
     $produit->setPrixUnitaire($obj->prix_unitaire);
     $produit->setQuantite($obj->quantite_stock);
@@ -57,6 +62,7 @@ class ProduitRepository
     $produit->setDescription($obj->description);
     $produit->setId($obj->id);
   
+
     return $produit;
   }
   }

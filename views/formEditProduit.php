@@ -7,7 +7,7 @@
 	<input type="text" name="libelle" value="<?php echo $produit->getLibelle() ?>"/>
 	<br>
 	<label>Description</label>
-	<input type="text" name="desc" value="<?php echo $produit->getDescription() ?>"/>
+	<input type="text" name="descr" value="<?php echo $produit->getDescription() ?>"/>
 	<br>
 	<label>Prix unitaire</label>
 	<input type="text" name="prix" value="<?php echo $produit->getPrixUnitaire() ?>"/>
