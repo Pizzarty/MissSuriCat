@@ -13,10 +13,6 @@
     <th>Date Commande</th>
     <th>Date Expédition</th>
     <th>Statut</th>
-    <?php if($_SESSION['grade'] == 1){ ?>
-      <th>Editer</th>
-      <th>Supprimer</th>
-    <?php } ?>
   </thead>
   <tbody>
     <?php
