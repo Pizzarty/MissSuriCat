@@ -90,7 +90,7 @@ switch ($action) {
 			$produit->setId($_POST["id"]);
 			$produit->setReference($_POST["ref"]);
 			$produit->setLibelle($_POST["libelle"]);
-			$produit->setDescription($_POST["desc"]);
+			$produit->setDescription($_POST["descr"]);
 			$produit->setPrixUnitaire($_POST["prix"]);
 			$produit->setQuantite($_POST["quantite"]);
 
