@@ -192,6 +192,9 @@ switch ($action) {
 		$vueAAfficher = "views/passerCommande.php";
 		break;
 
+	case "insertPanier":
+		$commandeRepo = new CommandeRepository();
+
 
 	//Jeu d'instructions appelé lorsque aucune action n'est renseignée dans l'url
 	default:
@@ -219,10 +222,31 @@ switch ($action) {
 		$vueAAfficher = "views/formAddProduit.php";
 		break;
 
-		case "formAddProduit":
+	case "formAddProduit":
 		//On prépare la vue à afficher
 		$vueAAfficher = "views/formAddProduit.php";
 		break;
+	case "insertPanier":
+
+		$produit = new Produit();
+		$produit->setLibelle($_POST["produit"]);
+
+
+		$commande = new Commande();
+		$datetime = new DateTime();
+		$commande->setDateCmd($datetime);
+		$commande->setProduit($_POST["produit"]);
+
+		$commande_produit = new CommandeProduit();
+		$commande_produit->setQuantite($_POST["quantite"]);
+
+		$message = $commande->save($pdo);
+
+
+
+
+
+
 
 }
 

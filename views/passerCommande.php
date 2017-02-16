@@ -14,11 +14,12 @@
     <?php } ?>
   </select>
 <label>Quantité</label>
-<input type="number" name="quantité" value="0">
+<input type="text" name="quantite">
 <br>
     <?php } ?>
-  <input type="submit" value="Ajouter au panier"/>
-  <br>
+    <br>
   <label><?php echo $message ?></label>
+  <input type="submit" value="Ajouter au panier"/>
   <input type="hidden" name="action" value="insertPanier"/>
+  <input type="hidden" name="action" value=<?php echo $client->getId() ?>/>
 </form>

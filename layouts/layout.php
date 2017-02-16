@@ -6,13 +6,14 @@
   </head>
   <body>
     <?php if (!empty($_SESSION['login'])) {?>
-      <!-- Bloc Menu -->
-      <?php if($_SESSION['grade'] == 1){ ?>
-        <a href="./index.php?action=listClient">Clients</a>
+      <?php if($_SESSION['grade'] == 1){
+        ?><a href="./index.php?action=listClient">Clients</a>
         <a href="./index.php?action=listCommande">Commandes</a>
-        <?php } ?>
-      <a href="./index.php?action=passerCommande">Passer une commande</a>
-      <a href="./index.php?action=listProduit">Produits</a>
+        <?php }
+        if($_SESSION['grade'] == 2){ ?>
+        <a href="./index.php?action=passerCommande">Passer une commande</a>
+      <?php } ?>
+        <a href="./index.php?action=listProduit">Produits</a>
       <label>Bienvenue en enfer <?php echo $_SESSION['prenom'] . ' ' . $_SESSION['nom'] ?></label>
       <a href="./index.php?action=disconnect">Déconnexion</a>
     <?php } ?>
