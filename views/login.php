@@ -9,5 +9,5 @@
 	<input type="submit" value="Connexion"/>
 	<label><?php if(isset($message)) echo $message ?></label>
 	<input type="hidden" name="action" value="verifLogin"/>
-	<input type="hidden" name="grade" value="<?php echo $user->getGrade() ?>"/>
+	<input type="hidden" name="grade" value="<?php echo $client->getGrade() ?>"/>
 </form>

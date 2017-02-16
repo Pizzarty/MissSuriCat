@@ -53,7 +53,7 @@
     $resultat->setFetchMode(PDO::FETCH_OBJ);
 
     $obj = $resultat->fetch();
-    
+
     //Ensuite :
     // 1 -  instancier un objet client
     // 2 -  hydrater ses attributs avec les valeurs récupérées en bdd
@@ -73,5 +73,5 @@
 
     return $client;
   }
-  
+
   }
