@@ -8,8 +8,6 @@
     <th>Civilité</th>
     <th>Nom</th>
     <th>Prénom</th>
-    <th>Nom Client</th>
-    <th>Prénom Client</th>
     <th>Produit</th>
     <th>Quantite</th>
     <th>Date Commande</th>
