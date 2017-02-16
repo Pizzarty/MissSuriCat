@@ -12,7 +12,7 @@
       } ?>
       <a href="./index.php?action=listCommande">Commandes</a>
       <a href="./index.php?action=listProduit">Produits</a>
-      <label>Bienvenue sur mon blog de la mort qui tue <?php echo $_SESSION['prenom'] . ' ' . $_SESSION['nom'] ?></label>
+      <label>Bienvenue en enfer <?php echo $_SESSION['prenom'] . ' ' . $_SESSION['nom'] ?></label>
       <a href="./index.php?action=disconnect">Déconnexion</a>
     <?php  ?>
     <!-- Bloc Contenu -->

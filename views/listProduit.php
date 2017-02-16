@@ -1,5 +1,5 @@
 <?php if($_SESSION['grade'] == 1){ ?>
-  <a href="./index.php?action=formAddCommande">Ajouter</a>
+  <a href="./index.php?action=formAddProduit">Ajouter</a>
 <?php } ?>
 <table>
   <thead>

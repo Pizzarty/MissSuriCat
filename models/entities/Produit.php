@@ -29,18 +29,19 @@ class Produit
       //Exécuter la requête insert d'une personne en base de donnée
       //Préparation de la requête
 
-      $stmt = $pdo->prepare('INSERT INTO produit (id, ref, libelle, quantite_stock, prix_unitaire, description) VALUES ( :id, :ref, :libelle, :quantite, :prix, :descr)');
+      $stmt = $pdo->prepare('INSERT INTO produit (ref, libelle, quantite_stock, prix_unitaire, description) VALUES (:ref, :libelle, :quantite, :prix, :descr)');
 
 
       //Binder les paramètres à la requête de manière sécurisée
       $stmt->bindParam(':ref', $this->reference, PDO::PARAM_STR);
       $stmt->bindParam(':libelle', $this->libelle, PDO::PARAM_STR);
-      $stmt->bindParam(':quantite', $this->quantite_stock, PDO::PARAM_STR);
-      $stmt->bindParam(':prix', $this->prix_unitaire, PDO::PARAM_STR);
+      $stmt->bindParam(':quantite', $this->quantite, PDO::PARAM_INT);
+      $stmt->bindParam(':prix', $this->prixUnitaire, PDO::PARAM_INT);
       $stmt->bindParam(':descr', $this->description, PDO::PARAM_STR);
 
-   
-      return "Votre nouveau client a été enregistré avec succès";
+      $stmt->execute();
+
+      return "Votre produit a été enregistré avec succès";
 
     }
     catch(PDOException $e) {
@@ -60,8 +61,8 @@ class Produit
       //Binder les paramètres à la requête de manière sécurisée
       $stmt->bindParam(':ref', $this->reference, PDO::PARAM_STR);
       $stmt->bindParam(':libelle', $this->libelle, PDO::PARAM_STR);
-      $stmt->bindParam(':quantite', $this->quantite_stock, PDO::PARAM_STR);
-      $stmt->bindParam(':prix', $this->prix_unitaire, PDO::PARAM_STR);
+      $stmt->bindParam(':quantite', $this->quantite, PDO::PARAM_INT);
+      $stmt->bindParam(':prix', $this->prixUnitaire, PDO::PARAM_INT);
       $stmt->bindParam(':descr', $this->description, PDO::PARAM_STR);
       $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
 
@@ -71,7 +72,7 @@ class Produit
 
 
 
-      return "Votre client a été mis à jour avec succès";
+      return "Votre produit a été mis à jour avec succès";
 
     }
     catch(PDOException $e) {
