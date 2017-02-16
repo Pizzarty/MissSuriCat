@@ -11,7 +11,7 @@
     <?php } ?>
   </select>
 <label>Quantité</label>
-<input type="text" name="quantité">
+<input type="number" name="quantité" value="1">
   <input type="submit" value="Ajouter au panier"/>
   <br>
   <label><?php echo $message ?></label>
