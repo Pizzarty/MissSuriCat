@@ -46,8 +46,8 @@ switch ($action) {
 				$listeClients = $clientRepo->getAll($pdo);
 				$vueAAfficher = "views/listClient.php";
 			} elseif($_SESSION['grade'] == 2) {
-				$commandeRepo = new CommandeRepository();
-				$listCommande = $commandeRepo->getAll($pdo);
+				$produitRepo = new ProduitRepository();
+				$listProduit = $produitRepo->getAll($pdo);
 				$vueAAfficher = "views/listProduit.php";
 			}
 		} else {
@@ -228,5 +228,3 @@ switch ($action) {
 
 
 include_once("layouts/layout.php");
-
-
