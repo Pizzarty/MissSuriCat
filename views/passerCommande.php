@@ -10,4 +10,10 @@
     </option>
     <?php } ?>
   </select>
+<label>Quantité</label>
+<input type="text" name="quantité">
+  <input type="submit" value="Ajouter au panier"/>
+  <br>
+  <label><?php echo $message ?></label>
+  <input type="hidden" name="action" value="insertPanier"/>
 </form>
