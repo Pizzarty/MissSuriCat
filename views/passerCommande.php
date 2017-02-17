@@ -1,6 +1,5 @@
 <form action="./index.php" method="POST">
 
-  <?php foreach($listProduit as $produit) { ?>
   <label>Produit</label>
   <select name="id" value="">
     <option> </option>
@@ -17,7 +16,7 @@
 <label>Quantité</label>
 <input type="text" name="quantite">
 <br>
-<?php } ?>
+
 
 
     <br>
