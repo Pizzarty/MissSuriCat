@@ -199,12 +199,6 @@ switch ($action) {
 	case "insertPanier":
 		$commandeRepo = new CommandeRepository();
 
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 76c4e4c28207c827fd79c5d92387b582344db3b9
 		//crée un nouveau client dans la base de données
 	case "insertProduit":
 		//Instancier un objet du modèle qui va s'occuper sauvegarder votre client
@@ -225,21 +219,6 @@ switch ($action) {
 		break;
 	case "addPanier":
 
-
-<<<<<<< HEAD
-		//Istancier un objet commande vide
-		//Hydrater son attribut statut avec un objet Statut
-		//Hydrater son aatribut client avec un objet client
-		//Hydrater le reste de ses attributs
-		//Appeler la méthode save à partir de votre objet commande
-
-		$commande = new Commande();
-		$commande->setLibelle($_POST["produit"]);
-		$commande->setQuantite($_POST["quantite"]);
-		$commande->setDateCmd(curdate());
-		$commande->setProduit($_POST["produit"]);
-		$message = $commande->save($pdo);
-=======
 		$statutRepo = new StatutRepository();
 
 		$statut = $statutRepo->getOneById($pdo);
@@ -248,12 +227,9 @@ switch ($action) {
 		// $commande->setDateCommande($date);
 		$commande->setStatut($statut);
 		$message = $commande->save($pdo, $id);
->>>>>>> 76c4e4c28207c827fd79c5d92387b582344db3b9
-
 
 		$vueAAfficher = "views/passerCommande.php";
 
-<<<<<<< HEAD
 		//Jeu d'instructions appelé lorsque aucune action n'est renseignée dans l'url
 		default:
 			if(empty($_SESSION['login'])) {
@@ -265,23 +241,6 @@ switch ($action) {
 				$vueAAfficher = "views/listClient.php";
 				break;
 			}
-=======
-		break;
-//Jeu d'instructions appelé lorsque aucune action n'est renseignée dans l'url
-	default:
-		if(empty($_SESSION['login'])) {
-			$vueAAfficher = "views/login.php";
-		} else {
-			//On prépare la vue a afficher avec les données dont elle a besoin
-			$clientRepo = new ClientRepository();
-			$listeClients = $clientRepo->getAll($pdo);
-			$vueAAfficher = "views/listClient.php";
-			break;
-		}
-
-
-
->>>>>>> 76c4e4c28207c827fd79c5d92387b582344db3b9
 
 }
 
