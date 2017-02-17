@@ -193,10 +193,7 @@ switch ($action) {
 		$listProduit = $produitRepo->getAll($pdo);
 		$vueAAfficher = "views/passerCommande.php";
 		break;
-
-	case "insertPanier":
-		$commandeRepo = new CommandeRepository();
-
+		
 		//crée un nouveau client dans la base de données
 	case "insertProduit":
 		//Instancier un objet du modèle qui va s'occuper sauvegarder votre client
