@@ -15,11 +15,9 @@ public function save($pdo, $date) {
 
     try {
 
-
       //Exécuter la requête insert d'une personne en base de donnée
       //Préparation de la requête
-
-      $stmt = $pdo->prepare("INSERT INTO commande (statut_id, client_id, date_cmd) VALUES (1, '". $_SESSION['id'] ."', '". $date ."')");
+      $stmt = $pdo->prepare("INSERT INTO commande (statut_id, client_id, date_cmd) VALUES (1, '". $_SESSION['id'] ."', '" . $date ."')");
 
       //Binder les paramètres à la requête de manière sécurisée
 
@@ -29,7 +27,7 @@ public function save($pdo, $date) {
       //On exécute ensuite la requête préparée
 var_dump($stmt);
 
-      $stmt->execute();
+      // $stmt->execute();
 
 
 
