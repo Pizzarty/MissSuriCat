@@ -12,7 +12,7 @@ include_once('models/repositories/ClientRepository.php');
 include_once('models/repositories/PersonneRepository.php');
 include_once('models/repositories/CommandeRepository.php');
 include_once('models/repositories/ProduitRepository.php');
-include_once('models/repositories/statutRepository.php');
+include_once('models/repositories/StatutRepository.php');
 
 
 //On récupère un objet PDO une fois pour toutes pour dialoguer avec la bdd
@@ -219,17 +219,19 @@ switch ($action) {
 		break;
 	case "addPanier":
 
-		$statutRepo = new StatutRepository();
-
-		$statut = $statutRepo->getOneById($pdo);
-
 		$commande = new Commande();
-		// $commande->setDateCommande($date);
 		$commande->setStatut($statut);
-		$message = $commande->save($pdo, $id);
+
+		$date = date('Y-m-d H:i:s');
+		$message = $commande->save($pdo, $date);
+
+		$commandeProduit = new CommandeProduit();
+		$commandeProduit->setQuantite($quantite);
+
 
 		$vueAAfficher = "views/passerCommande.php";
 
+		break;
 		//Jeu d'instructions appelé lorsque aucune action n'est renseignée dans l'url
 		default:
 			if(empty($_SESSION['login'])) {

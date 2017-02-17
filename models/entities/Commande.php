@@ -11,7 +11,7 @@ class Commande extends Personne
     protected $produit;
     protected $commande_produit;
 
-public function save($pdo) {
+public function save($pdo, $date) {
 
     try {
 
@@ -19,7 +19,7 @@ public function save($pdo) {
       //Exécuter la requête insert d'une personne en base de donnée
       //Préparation de la requête
 
-      $stmt = $pdo->prepare("INSERT INTO commande (statut_id, client_id) VALUES (1, '". $_SESSION['id']. "')");
+      $stmt = $pdo->prepare("INSERT INTO commande (statut_id, client_id, date_cmd) VALUES (1, '". $_SESSION['id'] ."', '". $date ."')");
 
       //Binder les paramètres à la requête de manière sécurisée
 
