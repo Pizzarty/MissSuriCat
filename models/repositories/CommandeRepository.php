@@ -6,12 +6,12 @@
     public function getAll($pdo){
 
       $req = $pdo->query("SELECT p.civilite, p.nom, p.prenom, cmd.id, cmd.ref, cmd.date_expedition, cmd.date_cmd, s.libelle, pro.libelle AS libelle2, cp.quantite
-      FROM personne p 
-      INNER JOIN commande cmd ON p.id=cmd.client_id 
-      INNER JOIN statut s ON cmd.statut_id=s.id 
+      FROM personne p
+      INNER JOIN commande cmd ON p.id=cmd.client_id
+      INNER JOIN statut s ON cmd.statut_id=s.id
       INNER JOIN commande_produit cp ON cp.com_id=cmd.id
       INNER JOIN produit pro ON pro.id=cp.prd_id
-      ORDER BY p.nom, p.prenom 
+      ORDER BY p.nom, p.prenom
       ");
 
       $req->setFetchMode(PDO::FETCH_OBJ);

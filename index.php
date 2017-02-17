@@ -35,6 +35,7 @@ switch ($action) {
 		$personne = $personneRepo->getPersonne($pdo, $_POST['login'], $_POST['pwd']);
 
 		if($personne) {
+			$_SESSION['id'] = $personne->getId();
 			$_SESSION['login'] = $personne->getLogin();
 			$_SESSION['nom'] = $personne->getNom();
 			$_SESSION['prenom'] = $personne->getPrenom();
@@ -194,19 +195,6 @@ switch ($action) {
 	case "insertPanier":
 		$commandeRepo = new CommandeRepository();
 
-
-	//Jeu d'instructions appelé lorsque aucune action n'est renseignée dans l'url
-	default:
-		if(empty($_SESSION['login'])) {
-			$vueAAfficher = "views/login.php";
-		} else {
-			//On prépare la vue a afficher avec les données dont elle a besoin
-			$clientRepo = new ClientRepository();
-			$listeClients = $clientRepo->getAll($pdo);
-			$vueAAfficher = "views/listClient.php";
-			break;
-		}
-
 		//crée un nouveau client dans la base de données
 	case "insertProduit":
 		//Instancier un objet du modèle qui va s'occuper sauvegarder votre client
@@ -231,10 +219,16 @@ switch ($action) {
 		$produit->setLibelle($_POST["produit"]);
 		$produit->setQuantite($_POST["quantite"]);
 
+		//Istancier un objet commande vide
+		//Hydrater son attribut statut avec un objet Statut
+		//Hydrater son aatribut client avec un objet client
+		//Hydrater le reste de ses attributs
+		//Appeler la méthode save à partir de votre objet commande
 
 		$commande = new Commande();
-		$datetime = new DateTime();
-		$commande->setDateCmd($datetime);
+		$commande->setLibelle($_POST["produit"]);
+		$commande->setQuantite($_POST["quantite"]);
+		$commande->setDateCmd(curdate());
 		$commande->setProduit($_POST["produit"]);
 		$message = $commande->save($pdo);
 
@@ -244,11 +238,17 @@ switch ($action) {
 		$message = $commande_produit->save($pdo);
 		$vueAAfficher = "views/passerCommande.php";
 
-
-
-
-
-
+		//Jeu d'instructions appelé lorsque aucune action n'est renseignée dans l'url
+		default:
+			if(empty($_SESSION['login'])) {
+				$vueAAfficher = "views/login.php";
+			} else {
+				//On prépare la vue a afficher avec les données dont elle a besoin
+				$clientRepo = new ClientRepository();
+				$listeClients = $clientRepo->getAll($pdo);
+				$vueAAfficher = "views/listClient.php";
+				break;
+			}
 
 }
 
