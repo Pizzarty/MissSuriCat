@@ -62,7 +62,7 @@ class ProduitRepository
     $produit->setDescription($obj->description);
     $produit->setId($obj->id);
   
-
+var_dump($produit);
     return $produit;
   }
   }

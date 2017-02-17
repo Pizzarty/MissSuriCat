@@ -12,37 +12,34 @@ class Commande extends Personne
     protected $commande_produit;
 
 
+<<<<<<< HEAD
 private function save($pdo, $_SESSION) {
+=======
+public function save($pdo) {
+>>>>>>> 76c4e4c28207c827fd79c5d92387b582344db3b9
 
     try {
+
+  
       //Exécuter la requête insert d'une personne en base de donnée
       //Préparation de la requête
+<<<<<<< HEAD
       $stmt = $pdo->prepare('INSERT INTO commande (client_id, statut_id) VALUES ( :$_SESSION["id"], :statut)');
+=======
+      $stmt = $pdo->prepare("INSERT INTO commande (statut_id, client_id) VALUES (1, '". $_SESSION['id'] "')");
+>>>>>>> 76c4e4c28207c827fd79c5d92387b582344db3b9
 
       //Binder les paramètres à la requête de manière sécurisée
-      $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
-      $stmt->bindParam(':dateCmd', $this->date_Cmd, PDO::PARAM_STR);
-      $stmt->bindParam(':statut', $this->statut, PDO::PARAM_STR);
+
+      $stmt->bindParam($_SESSION['id'], $obj->id, PDO::PARAM_INT);
+
 
       //On exécute ensuite la requête préparée
+var_dump($stmt);
+
       $stmt->execute();
 
-      //On récupère l'id généré (auto-incrémenté) de la table personne
-      $stmt2 = $pdo->prepare('SELECT MAX(id) FROM commande');
-      $stmt2->execute();
-      $obj = $stmt2->fetch(PDO::FETCH_OBJ);
 
-      //On crée le client correspondant avec l'id correspondant
-      //Préparation de la requête
-      $stmt3 = $pdo->prepare('INSERT INTO commande_produit (cmd_id, prd_id, quantite) VALUES (:id, :produit, :quantite)');
-
-      //Binder les paramètres à la requête de manière sécurisée
-      $stmt3->bindParam(':id', $obj->id, PDO::PARAM_INT);
-      $stmt3->bindParam(':produit', $this->produit, PDO::PARAM_STR);
-      $stmt3->bindParam(':quantite', $this->quantite, PDO::PARAM_STR);
-
-      //On exécute ensuite la requête préparée
-      $stmt3->execute();
 
       return "Votre commande a été enregistré avec succès";
     }
@@ -91,13 +88,14 @@ private function save($pdo, $_SESSION) {
     public function getClient(){
       return $this->client;
     }
+
     public function setClient($client){
       $this->client = $client;
     }
-
     public function getProduit(){
       return $this->produit;
     }
+
     public function setProduit($produit){
       $this->produit = $produit;
     }

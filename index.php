@@ -12,6 +12,7 @@ include_once('models/repositories/ClientRepository.php');
 include_once('models/repositories/PersonneRepository.php');
 include_once('models/repositories/CommandeRepository.php');
 include_once('models/repositories/ProduitRepository.php');
+include_once('models/repositories/statutRepository.php');
 
 
 //On récupère un objet PDO une fois pour toutes pour dialoguer avec la bdd
@@ -40,6 +41,7 @@ switch ($action) {
 			$_SESSION['nom'] = $personne->getNom();
 			$_SESSION['prenom'] = $personne->getPrenom();
 			$_SESSION['grade'] = $personne->getGrade();
+			$_SESSION['id'] = $personne->getId();
 			//On prépare la vue à afficher avec les données dont elle a besoin
 			if($_SESSION['grade'] == 1) {
 				$clientRepo = new ClientRepository();
@@ -187,6 +189,8 @@ switch ($action) {
 
 	case "passerCommande":
 
+
+
 		$produitRepo = new ProduitRepository();
 		$listProduit = $produitRepo->getAll($pdo);
 		$vueAAfficher = "views/passerCommande.php";
@@ -195,6 +199,12 @@ switch ($action) {
 	case "insertPanier":
 		$commandeRepo = new CommandeRepository();
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 76c4e4c28207c827fd79c5d92387b582344db3b9
 		//crée un nouveau client dans la base de données
 	case "insertProduit":
 		//Instancier un objet du modèle qui va s'occuper sauvegarder votre client
@@ -213,12 +223,10 @@ switch ($action) {
 		//On prépare la vue à afficher
 		$vueAAfficher = "views/formAddProduit.php";
 		break;
-	case "insertPanier":
+	case "addPanier":
 
-		$produit = new Produit();
-		$produit->setLibelle($_POST["produit"]);
-		$produit->setQuantite($_POST["quantite"]);
 
+<<<<<<< HEAD
 		//Istancier un objet commande vide
 		//Hydrater son attribut statut avec un objet Statut
 		//Hydrater son aatribut client avec un objet client
@@ -231,13 +239,21 @@ switch ($action) {
 		$commande->setDateCmd(curdate());
 		$commande->setProduit($_POST["produit"]);
 		$message = $commande->save($pdo);
+=======
+		$statutRepo = new StatutRepository();
 
-		$commande_produit = new CommandeProduit();
-		$commande_produit->setQuantite($_POST["quantite"]);
+		$statut = $statutRepo->getOneById($pdo);
 
-		$message = $commande_produit->save($pdo);
+		$commande = new Commande();
+		// $commande->setDateCommande($date);
+		$commande->setStatut($statut);
+		$message = $commande->save($pdo, $id);
+>>>>>>> 76c4e4c28207c827fd79c5d92387b582344db3b9
+
+
 		$vueAAfficher = "views/passerCommande.php";
 
+<<<<<<< HEAD
 		//Jeu d'instructions appelé lorsque aucune action n'est renseignée dans l'url
 		default:
 			if(empty($_SESSION['login'])) {
@@ -249,6 +265,23 @@ switch ($action) {
 				$vueAAfficher = "views/listClient.php";
 				break;
 			}
+=======
+		break;
+//Jeu d'instructions appelé lorsque aucune action n'est renseignée dans l'url
+	default:
+		if(empty($_SESSION['login'])) {
+			$vueAAfficher = "views/login.php";
+		} else {
+			//On prépare la vue a afficher avec les données dont elle a besoin
+			$clientRepo = new ClientRepository();
+			$listeClients = $clientRepo->getAll($pdo);
+			$vueAAfficher = "views/listClient.php";
+			break;
+		}
+
+
+
+>>>>>>> 76c4e4c28207c827fd79c5d92387b582344db3b9
 
 }
 

@@ -2,8 +2,8 @@
 
   class Statut {
 
-    private $id;
-    private $libelle;
+    protected $id;
+    protected $libelle;
 
     public function getId(){
       return $this->id;
