@@ -19,7 +19,7 @@ public function save($pdo) {
   
       //Exécuter la requête insert d'une personne en base de donnée
       //Préparation de la requête
-      $stmt = $pdo->prepare("INSERT INTO commande (statut_id, client_id) VALUES (1, '". $_SESSION['id'] "')");
+      $stmt = $pdo->prepare("INSERT INTO commande (statut_id, client_id) VALUES (1, '". $_SESSION['id'] ."')");
 
       //Binder les paramètres à la requête de manière sécurisée
 

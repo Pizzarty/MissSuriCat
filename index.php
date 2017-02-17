@@ -12,7 +12,7 @@ include_once('models/repositories/ClientRepository.php');
 include_once('models/repositories/PersonneRepository.php');
 include_once('models/repositories/CommandeRepository.php');
 include_once('models/repositories/ProduitRepository.php');
-include_once('models/repositories/statutRepository.php');
+include_once('models/repositories/StatutRepository.php');
 
 
 //On récupère un objet PDO une fois pour toutes pour dialoguer avec la bdd
@@ -229,7 +229,10 @@ switch ($action) {
 		$commande = new Commande();
 		// $commande->setDateCommande($date);
 		$commande->setStatut($statut);
-		$message = $commande->save($pdo, $id);
+
+		$date = 
+
+		$message = $commande->save($pdo);
 
 
 		$vueAAfficher = "views/passerCommande.php";
