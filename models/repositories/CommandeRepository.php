@@ -53,4 +53,28 @@
         return $listCommande;
 
     }
+
+    public function getOneById($pdo) {
+
+    //Effectuer la requête en bdd pour récupérer le client correspondant à l'id renseigné
+    $resultat = $pdo->query('SELECT MAX(id) FROM commande ');
+
+
+    $resultat->setFetchMode(PDO::FETCH_OBJ);
+
+    $obj = $resultat->fetch();
+    
+    //Ensuite :
+    // 1 -  instancier un objet client
+    // 2 -  hydrater ses attributs avec les valeurs récupérées en bdd
+    // 3 -  retourner ensuite cet objet
+
+    $commande = new Commande();
+    $commande->setId();
+
+  
+
+    return $commande;
   }
+}
+

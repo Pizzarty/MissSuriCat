@@ -5,7 +5,7 @@
   <select name="produit" value="">
     <option> </option>
     <?php foreach ($listProduit as $produit ) { ?>
-    <option value=<?php echo $produit->getId()?>>
+    <option name="produit_id" value=<?php echo $produit->getId()?>>
       <?php
         echo $produit->getLibelle();
       ?>

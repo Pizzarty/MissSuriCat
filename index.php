@@ -6,8 +6,8 @@ include_once('models/entities/Personne.php');
 include_once('models/entities/Client.php');
 include_once('models/entities/Statut.php');
 include_once('models/entities/Commande.php');
-include_once('models/entities/CommandeProduit.php');
 include_once('models/entities/Produit.php');
+include_once('models/entities/CommandeProduit.php');
 include_once('models/repositories/ClientRepository.php');
 include_once('models/repositories/PersonneRepository.php');
 include_once('models/repositories/CommandeRepository.php');
@@ -223,16 +223,24 @@ switch ($action) {
 
 
 		$statutRepo = new StatutRepository();
-
 		$statut = $statutRepo->getOneById($pdo);
 
 		$commande = new Commande();
-		// $commande->setDateCommande($date);
 		$commande->setStatut($statut);
 
-		$date = 
+		$date = date('Y-m-d H:i:s');
 
-		$message = $commande->save($pdo);
+		// $produit = new Produit();
+		// $produit->setId($_POST['id']);
+
+
+		$commandeProduit = new CommandeProduit();
+		$commandeProduit->setQuantite($_POST['quantite']);
+		$commandeProduit->setProduit($_POST['produit']);
+
+		// $commande->save($pdo, $date);
+		$message = $commandeProduit->save($pdo);
+
 
 
 		$vueAAfficher = "views/passerCommande.php";
