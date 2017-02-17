@@ -25,8 +25,7 @@ public function save($pdo, $date) {
 
 
       //On exécute ensuite la requête préparée
-var_dump($stmt);
-
+      $stmt->execute();
       // $stmt->execute();
 
 

@@ -189,8 +189,6 @@ switch ($action) {
 
 	case "passerCommande":
 
-
-
 		$produitRepo = new ProduitRepository();
 		$listProduit = $produitRepo->getAll($pdo);
 		$vueAAfficher = "views/passerCommande.php";
@@ -228,12 +226,13 @@ switch ($action) {
 		$date = date('Y-m-d H:i:s');
 		$message = $commande->save($pdo, $date);
 
-		// $produit = new Produit();
-		// $produit->setId($_POST['id']);
+		$produitRepo = new ProduitRepository();
+		$produit = $produitRepo->getOneById($pdo, $_POST['id']);
 
 		$commandeProduit = new CommandeProduit();
 		$commandeProduit->setQuantite($_POST['quantite']);
-		$commandeProduit->setProduit($_POST['produit']);
+		$commandeProduit->setProduit($produit);
+		$commandeProduit->setCommande($commande);
 
 		// $commande->save($pdo, $date);
 		$message = $commandeProduit->save($pdo);

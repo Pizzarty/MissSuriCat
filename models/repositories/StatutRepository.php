@@ -53,7 +53,6 @@
     $statut = new Statut();
     $statut->setId($obj->id);
     $statut->setLibelle($obj->libelle);
-var_dump($statut);
 
     return $statut;
   }

@@ -2,7 +2,7 @@
 
 
   <label>Produit</label>
-  <select name="produit" value="">
+  <select name="id" value="">
     <option> </option>
     <?php foreach ($listProduit as $produit ) { ?>
     <option name="produit_id" value=<?php echo $produit->getId()?>>
@@ -10,7 +10,7 @@
         echo $produit->getLibelle();
       ?>
     </option>
-    
+
     <?php } ?>
       </select>
 

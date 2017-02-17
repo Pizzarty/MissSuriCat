@@ -47,7 +47,7 @@ class ProduitRepository
     $resultat->setFetchMode(PDO::FETCH_OBJ);
 
     $obj = $resultat->fetch();
-    
+
     //Ensuite :
     // 1 -  instancier un objet client
     // 2 -  hydrater ses attributs avec les valeurs récupérées en bdd
@@ -62,7 +62,6 @@ class ProduitRepository
     $produit->setDescription($obj->description);
     $produit->setId($obj->id);
   
-var_dump($produit);
     return $produit;
   }
   }
